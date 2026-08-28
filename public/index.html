@@ -1,88 +1,121 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Find My Paw</title>
+```
+<title>Pet Care Platform</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
 <body>
 
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
+```
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
-<header class="navbar">
+<header class="header">
 
-    <div class="logo">
-        🐾 Find My Paw
+    <div class="container navbar">
+
+        <div class="logo">
+            🐾 PetCare
+        </div>
+
+        <nav>
+            <a href="#health">Health Records</a>
+            <a href="#veterinarians">Veterinarians</a>
+            <a href="#lost-found">Lost & Found</a>
+        </nav>
+
     </div>
-
-    <nav>
-        <a href="#health">Health Records</a>
-        <a href="#veterinarians">Veterinarians</a>
-        <a href="#lost-found">Lost & Found</a>
-    </nav>
 
 </header>
 
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+<!-- =====================================================
+     HERO SECTION
+====================================================== -->
 
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="container">
 
-        <h1>Find My Paw</h1>
+        <h1>
+            Take Better Care of Your Pets
+        </h1>
 
         <p>
-            A simple platform to keep your pets healthy,
-            find nearby veterinarians, and help lost pets
+            Manage vaccination and medical records,
+            find veterinarians, and help lost pets
             find their way home.
         </p>
 
-        <a href="#health" class="hero-button">
-            Explore Pet Care
-        </a>
+        <div class="hero-buttons">
+
+            <a href="#health" class="button">
+                Health Records
+            </a>
+
+            <a href="#lost-found" class="button secondary">
+                Lost & Found
+            </a>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
-     FEATURE 1
-     VACCINATION + MEDICAL RECORDS
-========================================================= -->
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
 
-<section id="health" class="section">
-
-    <div class="section-header">
-
-        <h2>💉 Vaccination & Medical Records</h2>
-
-        <p>
-            Keep track of your pet's vaccination and medical
-            information in one place.
-        </p>
-
-    </div>
+<main class="container">
 
 
-    <!-- Pet ID Search -->
+    <!-- =================================================
+         FEATURE 1
+         VACCINATION AND MEDICAL RECORDS
+    ================================================== -->
 
-    <div class="search-box">
+    <section id="health" class="section">
 
-        <label for="health-pet-id">
-            Enter Pet ID
-        </label>
+        <div class="section-title">
 
-        <div class="search-row">
+            <span class="feature-number">
+                01
+            </span>
+
+            <div>
+                <h2>
+                    Vaccination & Medical Records
+                </h2>
+
+                <p>
+                    Keep track of your pet's health
+                    and vaccination history.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Pet ID -->
+
+        <div class="search-box">
+
+            <label for="health-pet-id">
+                Pet ID
+            </label>
 
             <input
                 type="number"
@@ -91,390 +124,398 @@
             >
 
             <button
-                type="button"
                 onclick="loadHealthRecords()"
+                class="button"
             >
                 View Records
             </button>
 
         </div>
 
-    </div>
+
+        <!-- Pet information -->
+
+        <div
+            id="pet-health-info"
+            class="pet-info"
+        >
+        </div>
 
 
-    <!-- Pet information -->
-
-    <div id="pet-health-info"></div>
+        <div class="two-column">
 
 
-    <div class="health-grid">
+            <!-- Vaccination -->
 
-        <!-- Vaccinations -->
+            <div class="card">
 
-        <div class="record-section">
+                <div class="card-header">
 
-            <div class="record-section-header">
+                    <div>
+                        <h3>
+                            💉 Vaccination Records
+                        </h3>
 
-                <h3>💉 Vaccinations</h3>
+                        <p>
+                            Track important vaccines
+                            and due dates.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="vaccination-list"
+                    class="record-list"
+                >
+
+                    <p class="empty-message">
+                        Enter a Pet ID to view
+                        vaccination records.
+                    </p>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h4>
+                        Add Vaccination
+                    </h4>
+
+                    <input
+                        type="text"
+                        id="vaccination-name"
+                        placeholder="Vaccination name"
+                    >
+
+                    <label>
+                        Initial Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="initial-date"
+                    >
+
+                    <label>
+                        Next Due Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="next-due-date"
+                    >
+
+                    <button
+                        onclick="addVaccinationFromPage()"
+                        class="button full"
+                    >
+                        Add Vaccination
+                    </button>
+
+                </div>
 
             </div>
 
-            <div id="vaccination-list">
 
-                <div class="empty-message">
-                    Enter a Pet ID to view vaccination records.
+            <!-- Medical -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>
+                            🩺 Medical Records
+                        </h3>
+
+                        <p>
+                            Keep a history of checkups,
+                            diagnosis and treatment.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="medical-list"
+                    class="record-list"
+                >
+
+                    <p class="empty-message">
+                        Enter a Pet ID to view
+                        medical records.
+                    </p>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h4>
+                        Add Medical Record
+                    </h4>
+
+                    <label>
+                        Checkup Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="checkup-date"
+                    >
+
+                    <input
+                        type="text"
+                        id="diagnosis"
+                        placeholder="Diagnosis"
+                    >
+
+                    <input
+                        type="text"
+                        id="treatment-status"
+                        placeholder="Treatment status"
+                    >
+
+                    <button
+                        onclick="addMedicalRecordFromPage()"
+                        class="button full"
+                    >
+                        Add Medical Record
+                    </button>
+
                 </div>
 
             </div>
 
         </div>
 
-
-        <!-- Medical Records -->
-
-        <div class="record-section">
-
-            <div class="record-section-header">
-
-                <h3>🩺 Medical Records</h3>
-
-            </div>
-
-            <div id="medical-list">
-
-                <div class="empty-message">
-                    Enter a Pet ID to view medical records.
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- Add vaccination -->
 
-    <div class="form-card">
+    <!-- =================================================
+         FEATURE 2
+         FIND VETERINARIANS
+    ================================================== -->
 
-        <h3>➕ Add Vaccination</h3>
+    <section
+        id="veterinarians"
+        class="section"
+    >
 
-        <div class="form-grid">
+        <div class="section-title">
 
-            <div class="form-group">
+            <span class="feature-number">
+                02
+            </span>
 
-                <label for="vaccination-name">
-                    Vaccination Name
-                </label>
+            <div>
 
-                <input
-                    type="text"
-                    id="vaccination-name"
-                    placeholder="e.g. Rabies"
-                >
+                <h2>
+                    Find Nearby Veterinarians
+                </h2>
 
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="initial-date">
-                    Initial Date
-                </label>
-
-                <input
-                    type="date"
-                    id="initial-date"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="next-due-date">
-                    Next Due Date
-                </label>
-
-                <input
-                    type="date"
-                    id="next-due-date"
-                >
+                <p>
+                    Search veterinary clinics by
+                    city or area.
+                </p>
 
             </div>
 
         </div>
 
-        <button
-            type="button"
-            onclick="addVaccinationFromPage()"
-        >
-            Add Vaccination
-        </button>
 
-    </div>
+        <div class="search-grid">
 
 
-    <!-- Add medical record -->
-
-    <div class="form-card">
-
-        <h3>➕ Add Medical Record</h3>
-
-        <div class="form-grid">
-
-            <div class="form-group">
-
-                <label for="checkup-date">
-                    Checkup Date
-                </label>
-
-                <input
-                    type="date"
-                    id="checkup-date"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="diagnosis">
-                    Diagnosis
-                </label>
-
-                <input
-                    type="text"
-                    id="diagnosis"
-                    placeholder="Enter diagnosis"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="treatment-status">
-                    Treatment Status
-                </label>
-
-                <input
-                    type="text"
-                    id="treatment-status"
-                    placeholder="e.g. Completed"
-                >
-
-            </div>
-
-        </div>
-
-        <button
-            type="button"
-            onclick="addMedicalRecordFromPage()"
-        >
-            Add Medical Record
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     FEATURE 2
-     FIND VETERINARIANS
-========================================================= -->
-
-<section
-    id="veterinarians"
-    class="section alternate-section"
->
-
-    <div class="section-header">
-
-        <h2>🩺 Find Nearby Veterinarians</h2>
-
-        <p>
-            Find veterinary clinics and doctors by city or area.
-        </p>
-
-    </div>
-
-
-    <!-- Search by city -->
-
-    <div class="search-box">
-
-        <h3>Search Veterinarians</h3>
-
-        <div class="search-row">
-
-            <div class="search-field">
+            <div class="search-box">
 
                 <label for="vet-city">
-                    City
+                    Search by City
                 </label>
 
-                <input
-                    type="text"
-                    id="vet-city"
-                    placeholder="e.g. Dhaka"
-                >
+                <div class="input-row">
+
+                    <input
+                        type="text"
+                        id="vet-city"
+                        placeholder="e.g. Dhaka"
+                    >
+
+                    <button
+                        onclick="searchVeterinariansByCity()"
+                        class="button"
+                    >
+                        Search
+                    </button>
+
+                </div>
 
             </div>
 
-            <button
-                type="button"
-                onclick="searchVeterinariansByCity()"
-            >
-                Search City
-            </button>
 
-        </div>
-
-
-        <div class="search-row">
-
-            <div class="search-field">
+            <div class="search-box">
 
                 <label for="vet-area">
-                    Area
+                    Search by Area
                 </label>
 
-                <input
-                    type="text"
-                    id="vet-area"
-                    placeholder="e.g. Dhanmondi"
-                >
+                <div class="input-row">
+
+                    <input
+                        type="text"
+                        id="vet-area"
+                        placeholder="e.g. Dhanmondi"
+                    >
+
+                    <button
+                        onclick="searchVeterinariansByArea()"
+                        class="button"
+                    >
+                        Search
+                    </button>
+
+                </div>
 
             </div>
 
+        </div>
+
+
+        <div class="all-button">
+
             <button
-                type="button"
-                onclick="searchVeterinariansByArea()"
+                onclick="loadVeterinarians()"
+                class="button secondary"
             >
-                Search Area
+                Show All Veterinarians
             </button>
 
         </div>
 
 
-        <button
-            type="button"
-            class="secondary-button"
-            onclick="loadVeterinarians()"
+        <div
+            id="veterinarian-list"
+            class="vet-grid"
         >
-            Show All Veterinarians
-        </button>
 
-    </div>
+            <p class="empty-message">
+                Veterinarians will appear here.
+            </p>
 
-
-    <!-- Veterinarian cards -->
-
-    <div
-        id="veterinarian-list"
-        class="card-grid"
-    >
-
-        <div class="empty-message">
-            Loading veterinarians...
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================================================
-     FEATURE 3
-     LOST AND FOUND PETS
-========================================================= -->
 
-<section
-    id="lost-found"
-    class="section"
->
+    <!-- =================================================
+         FEATURE 3
+         LOST AND FOUND PETS
+    ================================================== -->
 
-    <div class="section-header">
-
-        <h2>🐾 Lost & Found Pets</h2>
-
-        <p>
-            Report lost or found pets and help reunite them
-            with their families.
-        </p>
-
-    </div>
-
-
-    <!-- Filter buttons -->
-
-    <div class="filter-buttons">
-
-        <button
-            type="button"
-            class="filter active"
-            data-filter="all"
-            onclick="loadPetReports()"
-        >
-            All Reports
-        </button>
-
-        <button
-            type="button"
-            class="filter"
-            data-filter="lost"
-            onclick="loadLostPets()"
-        >
-            Lost Pets
-        </button>
-
-        <button
-            type="button"
-            class="filter"
-            data-filter="found"
-            onclick="loadFoundPets()"
-        >
-            Found Pets
-        </button>
-
-    </div>
-
-
-    <!-- Reports -->
-
-    <div
-        id="pet-report-list"
-        class="card-grid"
+    <section
+        id="lost-found"
+        class="section"
     >
 
-        <div class="empty-message">
-            Loading pet reports...
+        <div class="section-title">
+
+            <span class="feature-number">
+                03
+            </span>
+
+            <div>
+
+                <h2>
+                    Lost & Found Pets
+                </h2>
+
+                <p>
+                    Report lost or found pets and
+                    help reunite them with their owners.
+                </p>
+
+            </div>
+
         </div>
 
-    </div>
+
+        <!-- Filter buttons -->
+
+        <div class="filter-buttons">
+
+            <button
+                onclick="loadPetReports()"
+                class="filter active"
+            >
+                All
+            </button>
+
+            <button
+                onclick="loadLostPets()"
+                class="filter"
+            >
+                Lost Pets
+            </button>
+
+            <button
+                onclick="loadFoundPets()"
+                class="filter"
+            >
+                Found Pets
+            </button>
+
+        </div>
 
 
-    <!-- Report form -->
+        <!-- Reports -->
 
-    <div class="form-card report-form-card">
-
-        <h3>📢 Report a Lost or Found Pet</h3>
-
-        <form
-            id="report-form"
-            onsubmit="event.preventDefault(); submitPetReport();"
+        <div
+            id="pet-report-list"
+            class="report-grid"
         >
+
+            <p class="empty-message">
+                Lost and found reports will
+                appear here.
+            </p>
+
+        </div>
+
+
+        <!-- Report Form -->
+
+        <div class="report-form card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3>
+                        📢 Report a Lost or Found Pet
+                    </h3>
+
+                    <p>
+                        Fill in the information below
+                        to create a report.
+                    </p>
+
+                </div>
+
+            </div>
+
 
             <div class="form-grid">
 
 
-                <!-- Report type -->
-
                 <div class="form-group">
 
-                    <label for="report-type">
+                    <label>
                         Report Type
                     </label>
 
@@ -493,45 +534,39 @@
                 </div>
 
 
-                <!-- User ID -->
-
                 <div class="form-group">
 
-                    <label for="report-user-id">
-                        User ID
-                    </label>
-
-                    <input
-                        type="number"
-                        id="report-user-id"
-                        placeholder="Enter User ID"
-                    >
-
-                </div>
-
-
-                <!-- Pet ID -->
-
-                <div class="form-group">
-
-                    <label for="report-pet-id">
+                    <label>
                         Pet ID
                     </label>
 
                     <input
                         type="number"
                         id="report-pet-id"
-                        placeholder="If applicable"
+                        placeholder="Pet ID (optional)"
                     >
 
                 </div>
 
 
-                <!-- Last seen -->
+                <div class="form-group">
+
+                    <label>
+                        User ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="report-user-id"
+                        placeholder="User ID"
+                    >
+
+                </div>
+
 
                 <div class="form-group">
 
-                    <label for="last-seen-date">
+                    <label>
                         Last Seen Date
                     </label>
 
@@ -543,12 +578,10 @@
                 </div>
 
 
-                <!-- City -->
-
                 <div class="form-group">
 
-                    <label for="report-city">
-                        City *
+                    <label>
+                        City
                     </label>
 
                     <input
@@ -561,12 +594,10 @@
                 </div>
 
 
-                <!-- Area -->
-
                 <div class="form-group">
 
-                    <label for="report-area">
-                        Area *
+                    <label>
+                        Area
                     </label>
 
                     <input
@@ -579,133 +610,124 @@
                 </div>
 
 
-                <!-- ZIP -->
-
                 <div class="form-group">
 
-                    <label for="zip-code">
+                    <label>
                         ZIP Code
                     </label>
 
                     <input
                         type="text"
                         id="zip-code"
-                        placeholder="ZIP code"
+                        placeholder="ZIP Code"
                     >
 
                 </div>
 
 
-                <!-- Pet picture -->
-
                 <div class="form-group">
 
-                    <label for="pet-picture">
+                    <label>
                         Pet Picture URL
                     </label>
 
                     <input
                         type="url"
                         id="pet-picture"
-                        placeholder="https://..."
+                        placeholder="Image URL"
                     >
 
                 </div>
 
 
-                <!-- Identifying mark -->
+                <div class="form-group full-width">
 
-                <div class="form-group">
-
-                    <label for="identifying-mark">
+                    <label>
                         Identifying Mark
                     </label>
 
                     <input
                         type="text"
                         id="identifying-mark"
-                        placeholder="e.g. White spot on forehead"
+                        placeholder="Describe any unique marks"
                     >
 
                 </div>
 
 
-                <!-- Location URL -->
+                <div class="form-group full-width">
 
-                <div class="form-group">
+                    <label>
+                        Description
+                    </label>
 
-                    <label for="location-url">
-                        Location URL
+                    <textarea
+                        id="report-description"
+                        placeholder="Describe the pet and what happened..."
+                        rows="4"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Location Link
                     </label>
 
                     <input
                         type="url"
                         id="location-url"
-                        placeholder="Google Maps link"
+                        placeholder="Google Maps location URL"
                     >
 
                 </div>
 
-            </div>
-
-
-            <!-- Description -->
-
-            <div class="form-group full-width">
-
-                <label for="report-description">
-                    Description *
-                </label>
-
-                <textarea
-                    id="report-description"
-                    rows="5"
-                    placeholder="Describe the pet and what happened..."
-                    required
-                ></textarea>
 
             </div>
 
 
             <button
-                type="submit"
+                onclick="submitPetReport()"
+                class="button"
             >
-                Submit Pet Report
+                Submit Report
             </button>
 
-        </form>
+        </div>
 
-    </div>
+    </section>
 
-</section>
+</main>
 
 
-<!-- =========================================================
+<!-- =====================================================
      FOOTER
-========================================================= -->
+====================================================== -->
 
 <footer class="footer">
 
-    <div class="footer-logo">
-        🐾 Find My Paw
+    <div class="container">
+
+        <p>
+            🐾 PetCare Platform
+        </p>
+
+        <p>
+            Helping pets and their owners stay
+            healthy and connected.
+        </p>
+
     </div>
-
-    <p>
-        Helping pets find care, safety, and their way home.
-    </p>
-
-    <p>
-        © 2026 Find My Paw. All rights reserved.
-    </p>
 
 </footer>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script src="app.js"></script>
+```
 
 </body>
+
 </html>
